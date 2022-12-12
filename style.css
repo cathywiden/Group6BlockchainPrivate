@@ -3,3 +3,15 @@
   margin: 0;
   box-sizing: border-box;
 }
+body {
+  background-color: aquamarine;
+}
+#bigHead {
+  color: black;
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  margin-top: 20%;
+}
