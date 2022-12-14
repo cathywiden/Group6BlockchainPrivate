@@ -1,17 +1,130 @@
 * {
-  padding: 0;
-  margin: 0;
+  margin: 0 0;
+  padding: 0 0;
   box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
 }
-body {
-  background-color: aquamarine;
+
+.first-background {
+  position: relative;
+  height: 35vh;
+  background: url(images/pattern-bg.png) center center / cover;
 }
-#bigHead {
-  color: black;
-  font-size: 50px;
-  font-weight: bold;
+
+#map {
+  height: 65vh;
+  width: 100vw;
+  z-index: 0;
+}
+
+.container {
+  position: absolute;
+  top: 5vh;
+  left: 50%;
+  width: 40%;
+  margin-left: -20%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-rows: fit-content fit-content fit-content;
+  gap: 2rem;
+
+  z-index: 1;
+}
+
+.title {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: 400;
   text-align: center;
-  margin: 0;
-  padding: 0;
-  margin-top: 20%;
+}
+
+.search-box {
+  background-color: white;
+  width: 35vw;
+  height: 8vh;
+  justify-self: center;
+  border-radius: 15px;
+  display: grid;
+  grid-template-columns: 8fr 1fr;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-input {
+  resize: none;
+  height: 90%;
+  margin: 0 1vw;
+  border: none;
+  line-height: 7vh;
+  font-size: 1.2rem;
+}
+
+.search-input:focus {
+  border: none;
+  outline: none;
+  line-height: 7vh;
+  font-size: 1.2rem;
+}
+
+.search-input::placeholder {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 7vh;
+  color: rgb(172, 172, 172);
+}
+
+.search-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: black;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  opacity: 0.7;
+}
+
+.info-box {
+  width: 70vw;
+  height: 20vh;
+  background-color: white;
+  border-radius: 15px;
+  display: grid;
+  grid-template-columns: 1fr 5px 1fr 5px 1fr 5px 1fr;
+  justify-content: center;
+  padding: 4vh 0vw;
+  gap: 0.3rem;
+}
+
+.ip,
+.location {
+  display: grid;
+  grid-template-rows: 0.4fr 1fr;
+  padding: 0 1.5vw;
+}
+
+.header {
+  text-align: left;
+  font-size: 0.8rem;
+  color: hsl(0, 0%, 59%);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.content {
+  font-size: 1.4rem;
+  color: rgb(0, 0, 44);
+  font-weight: 600;
+}
+
+.line {
+  width: 3px;
+  height: 100%;
+  background-color: hsl(0, 0%, 59%);
+  justify-self: center;
 }
