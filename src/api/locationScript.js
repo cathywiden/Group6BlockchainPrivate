@@ -21,3 +21,4 @@ searchButton.addEventListener('click', () => {
         })
 })
 
+/* Whether we actually want to fetch latitude/longitude or rather some other data, such as region (approx.data) is to be discussed.*/

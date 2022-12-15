@@ -1,12 +1,12 @@
 GENERAL
 
 [ ] web service -- why it should be run on a blockchain? Motivate
+[ ] js in modules
 [ ] use localStorage to store entire chain
 [x] use an API to fetch location data
 [ ] motivate choice of API
 [ ] preset users in JSON like janne/test
-[ ]
-[ ]
+[ ] 
 
 
 LOGGED IN STATE
