@@ -7,8 +7,30 @@
 
 .firstBackground {
   position: relative;
-  height: 35vh;
-  background: url(../images/pattern-bg.png) center center / cover;
+  height: 100vh;
+  background: url(/img/MB.jpg) center center / cover;
+}
+span {
+  color: rgb(171, 49, 171);
+}
+
+#map {
+  height: 65vh;
+  width: 100vw;
+  z-index: 0;
+}
+#geoG {
+  color: rgb(31, 19, 161);
+}
+#geo {
+  font-size: 3rem;
+  font-style: italic;
+  color: rgb(171, 49, 171);
+}
+#mi {
+  font-size: 2rem;
+  font-style: italic;
+  color: rgb(210, 190, 40);
 }
 
 #map {
@@ -81,7 +103,7 @@
   height: 100%;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: black;
+  background-color: rgb(171, 49, 171);
   cursor: pointer;
 }
 
