@@ -3,7 +3,8 @@
 //=====================================//
 
 import { rollApi } from "/src/api/locationScript.js";
-//import { helloBlock } from "/src/blockchain/block.mjs";
+import { createLoginField } from "/src/logInAndOut.js";
+
 
 
 //=====================================//
@@ -21,4 +22,4 @@ let input = document.getElementsByClassName('searchInput')[0];
 
 rollApi(searchButton, input);
 
-console.log("The rollAPI-function is connected " +rollApi);
+createLoginField();
