@@ -124,6 +124,8 @@ span {
 }
 
 .ip,
+.timezone,
+.isp,
 .location {
   display: grid;
   grid-template-rows: 0.4fr 1fr;
