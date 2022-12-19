@@ -2,8 +2,8 @@
     .container {
       top: 2vh;
       gap: 1rem;
-      width: 100vw;
-      margin-left: -50%;
+      width: 80vw;
+      margin-left: -40%;
     }
   
     .searchBox {
