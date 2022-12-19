@@ -2,8 +2,9 @@
 //================IMPORTS==============//
 //=====================================//
 
+import { default as Block } from "/src/blockchain/block.js";
 import { rollApi } from "/src/api/locationScript.js";
-import Chain from "/src/blockchain/chain.js";
+import { default as Chain } from "/src/blockchain/chain.js";
 import { calculateHash } from "/src/blockchain/calculateHash.js";
 import { createLoginField } from "/src/logInAndOut.js";
 

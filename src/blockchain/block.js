@@ -1,6 +1,6 @@
-import { calculateHash } from "/src/blockchain/calculateHash.js"; 
+import { calculateHash } from "/src/blockchain/calculateHash.js";
 
-class Block {
+export default class Block {
   constructor(data, previousHash) {
     this.data = data;
     this.previousHash = previousHash;
