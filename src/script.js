@@ -20,5 +20,5 @@ let input = document.getElementsByClassName("searchInput")[0];
 //=====================================//
 
 rollApi(searchButton, input);
-console.log("Encrypt: Hello World! ===", await calculateHash("Hello World!"));
+// console.log("Encrypt: Hello World! ===", await calculateHash("Hello World!"));
 createLoginField();
