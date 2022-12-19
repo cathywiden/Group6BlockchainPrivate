@@ -150,3 +150,16 @@ span {
   background-color: hsl(0, 0%, 59%);
   justify-self: center;
 }
+
+h4 {
+  background-color: white;
+  width: 80vw;
+  height: 30vh;
+  z-index: 99;
+  font-size: 2ch;
+  color: rgb(171, 49, 171);
+}
+
+#loginBtn {
+  background-color: rgb(210, 190, 40);
+}
