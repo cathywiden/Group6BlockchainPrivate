@@ -4,7 +4,7 @@
 
 import { rollApi } from "/src/api/locationScript.js";
 import { calculateHash } from "/src/blockchain/calculateHash.js";
-//import { helloBlock } from "/src/blockchain/block.mjs";
+import { createLoginField } from "/src/logInAndOut.js";
 
 //=====================================//
 //===========GLOBAL VARIABLES==========//
@@ -18,5 +18,6 @@ let input = document.getElementsByClassName("searchInput")[0];
 //=====================================//
 
 rollApi(searchButton, input);
-
 console.log("Encrypt: Hello World! ===", await calculateHash("Hello World!"));
+createLoginField();
+
