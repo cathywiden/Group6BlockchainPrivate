@@ -19,5 +19,4 @@ let input = document.getElementsByClassName("searchInput")[0];
 
 rollApi(searchButton, input);
 
-console.log("The rollAPI-function is connected " + rollApi);
 console.log("Encrypt: Hello World! ===", await calculateHash("Hello World!"));
