@@ -1,10 +1,10 @@
-import { calculateHash } from "/src/blockchain/calculateHash.js"; 
+import { calculateHash } from "/src/blockchain/calculateHash.js";
 
-class Block {
-  constructor(data, previousHash) {
+export default class Block {
+  constructor(data, newHash, previousHash) {
     this.data = data;
     this.previousHash = previousHash;
-    this.timestamp = Date.now();
-    this.hash = calculateHash(data);
+    this.timestamp = Date();
+    this.newHash = newHash;
   }
 }
