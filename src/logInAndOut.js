@@ -15,10 +15,14 @@ if (!localStorage.getItem("users")) {
 }
 
 function createLoginField() {
+
+
   //CREATES LOGIN INPUTFIELD AND BUTTON
 
   loginContainer.innerHTML =
     '<input id="userName" type="text" placeholder="Username"><input id="passWord" type="password" placeholder="Password"></input><button id="loginBtn">Log in</button>';
+
+
   let loginBtn = document.getElementById("loginBtn");
 
   loginBtn.addEventListener("click", () => {
@@ -39,11 +43,17 @@ function createLoginField() {
 function createLoggedInView() {
   //CREATES THE VIEW THAT LOGGED IN USER SEES +LOGOUT BTN
 
+  let logIt = document.getElementById("logIt");
+  logIt.addEventListener("click", () => {
+    console.log("button works");
+    first.addBlock();
+    console.log(first);
+  });
+
   loginContainer.innerHTML = "";
   let loggedinView = document.createElement("h4");
   loginContainer.appendChild(loggedinView);
-  loggedinView.innerHTML =
-    'Välkommen, du är nu inloggad <br></br> <button id="logoutBtn" >Log out</button>';
+  loggedinView.innerHTML = `Välkommen, du är nu inloggad <br></br> <button id="logoutBtn" >Log out</button><br><br><button id="logIt">Log my location</button>`;
   let logoutBtn = document.getElementById("logoutBtn");
 
   logoutBtn.addEventListener("click", () => {

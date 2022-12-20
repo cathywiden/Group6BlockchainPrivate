@@ -14,7 +14,7 @@ import { createLoginField } from "/src/logInAndOut.js";
 
 let searchButton = document.getElementsByClassName("searchButton")[0];
 let input = document.getElementsByClassName("searchInput")[0];
-const logIt = document.getElementById("logIt");
+
 
 //=====================================//
 //=============RUNNING SCRIPT==========//
@@ -34,8 +34,3 @@ let first = new Chain();
 // console.log(first);
 
 //--------- Lägg till block i kedjan ------//
-logIt.addEventListener("click", () => {
-  console.log("button works");
-  first.addBlock();
-  console.log(first);
-});
