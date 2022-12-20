@@ -7,6 +7,7 @@ import { rollApi } from "/src/api/locationScript.js";
 import { default as Chain } from "/src/blockchain/chain.js";
 import { calculateHash } from "/src/blockchain/calculateHash.js";
 import { createLoginField } from "/src/logInAndOut.js";
+import { validateChainBtn } from "/src/logInAndOut.js";
 
 //=====================================//
 //===========GLOBAL VARIABLES==========//
@@ -22,6 +23,7 @@ let input = document.getElementsByClassName("searchInput")[0];
 rollApi(searchButton, input);
 // console.log("Encrypt: Hello World! ===", await calculateHash("Hello World!"));
 createLoginField();
+validateChainBtn();
 
 //------ Testa Bockkedjan ------//
 // let first = new Chain();
