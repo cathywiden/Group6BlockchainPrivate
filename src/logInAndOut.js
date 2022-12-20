@@ -48,5 +48,15 @@ function createLoggedInView() {
 
   logoutBtn.addEventListener("click", () => {
     createLoginField();
+    localStorage.removeItem("userLoggedIn");
   });
 }
+
+window.onload = () => {
+  const loggedInUser = localStorage.getItem("userLoggedIn");
+  if (loggedInUser) {
+    createLoggedInView(loggedInUser);
+  } else {
+    createLoginField();
+  }
+};
