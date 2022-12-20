@@ -20,6 +20,10 @@ export function rollApi(searchButton, input) {
                 locationInfo.textContent = location;
                 latitudeInfo.textContent = data.lat;
                 longitudeInfo.textContent = data.lon;
+            
+                console.log(data.lon);
+                console.log(data.lat);
+            
             })
             .catch(err => console.log(err));
     }
