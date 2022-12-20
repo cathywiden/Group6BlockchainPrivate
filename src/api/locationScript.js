@@ -21,8 +21,11 @@ export function rollApi(searchButton, input) {
                 latitudeInfo.textContent = data.lat;
                 longitudeInfo.textContent = data.lon;
             
-                console.log(data.lon);
                 console.log(data.lat);
+                console.log(data.lon);
+                
+                localStorage.setItem("latitude", data.lat);
+                localStorage.setItem("longitude", data.lon);
             
             })
             .catch(err => console.log(err));
