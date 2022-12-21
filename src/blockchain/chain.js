@@ -11,7 +11,7 @@ export default class Chain {
   createGenesisBlock() {
     // CREATES THE FIRST BLOCK ON THE CHAIN
     return new Block(
-      { user: "Genesis", longitude: 0, latitude: 0 },
+      { user: "Genesis", location: 0 },
       "7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069",
       "0"
     ); //I'VE PUT LOCATION HERE INSTEAD OF JANNES WORK, NOT SURE IF THIS IS WHAT WE WANT TO HAVE HERE?
@@ -22,13 +22,8 @@ export default class Chain {
     return this.blockChain[this.blockChain.length - 1].newHash; //RETURNS PREVIOUS POST IN ARRAY BUT SKIPS GENESISBLOCK
   }
 
-  async addBlock() {
+  async addBlock(newBlock) {
     //ADD NEW BLOCK TO THE CHAIN
-    let newBlock = {
-      user: localStorage.getItem("userLoggedIn"),
-      longitude: localStorage.getItem("longitude"),
-      latitude: localStorage.getItem("latitude"),
-    };
     return this.blockChain.push(
       new Block(
         newBlock,
