@@ -42,24 +42,25 @@ function createLoggedInView() {
   loginContainer.innerHTML = "";
   let loggedinView = document.createElement("h4");
   loginContainer.appendChild(loggedinView);
-  loggedinView.innerHTML =
-    'Välkommen, du är nu inloggad <br></br> <button id="logoutBtn" >Log out</button>';
-  let logoutBtn = document.getElementById("logoutBtn");
+  loggedinView.innerHTML = `Välkommen, du är nu inloggad som ${users.userName} <br></br>`;
+  let logoutBtn = document.createElement("button");
+  logoutBtn.innerText = "Log Out";
+  logoutBtn.id = "logoutBtn";
 
   logoutBtn.addEventListener("click", () => {
-    createLoginField();
-    loginContainer.style.display = "none";
-    loginBtn.style.display = "none";
+    loginBtn.remove(); /// nyaste sättet att plocka bort element!
+    loginContainer.remove(); /// nyaste sättet att plocka bort element!
     localStorage.removeItem("userLoggedIn");
     loginFormButton(); // här kommer våran knapp fram (testing)
   });
+  loggedinView.appendChild(logoutBtn);
 }
 
 window.onload = () => {
   const loggedInUser = localStorage.getItem("userLoggedIn");
   if (loggedInUser) {
     createLoggedInView(loggedInUser);
-    loginFormBtn.style.display = "none";
+    loginFormBtn.remove();
   } else {
     loginFormButton();
   }
@@ -68,14 +69,14 @@ window.onload = () => {
 export function loginFormButton() {
   loginFormContainer.innerHTML = "";
   let formButton = document.createElement("button");
-  loginFormContainer.appendChild(formButton);
-  loginFormContainer.innerHTML = '<button id="loginFormBtn" >Log in</button>';
-  let loginFormBtn = document.getElementById("loginFormBtn");
+  formButton.innerText = "Login";
+  formButton.id = "loginFormBtn";
+  // loginFormContainer.innerHTML = '<button id="loginFormBtn" >Log in</button>';
+  // let loginFormBtn = document.getElementById("loginFormBtn");
 
-  loginFormBtn.addEventListener("click", () => {
+  formButton.addEventListener("click", () => {
     createLoginField();
-    loginFormBtn.style.display = "none";
-    loginContainer.style.display = "block";
-    loginBtn.style.display = "block";
+    loginFormBtn.remove();
   });
+  loginFormContainer.appendChild(formButton);
 }
