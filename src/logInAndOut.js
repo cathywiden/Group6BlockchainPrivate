@@ -19,7 +19,7 @@ function createLoginField() {
   //CREATES LOGIN INPUTFIELD AND BUTTON
 
   loginContainer.innerHTML =
-    '<input id="userName" type="text" placeholder="Username"><br><input id="passWord" type="password" placeholder="Password"></input><br><button id="loginBtn">Log in</button>';
+    '<input id="userName" type="text" placeholder="Username"><input id="passWord" type="password" placeholder="Password"></input><button id="loginBtn">Log in</button>';
   let loginBtn = document.getElementById("loginBtn");
 
   loginBtn.addEventListener("click", () => {
@@ -43,30 +43,24 @@ function createLoggedInView() {
   loginContainer.innerHTML = "";
   let loggedinView = document.createElement("h4");
   loginContainer.appendChild(loggedinView);
-  loggedinView.innerHTML = `Välkommen, du är nu inloggad som ${users.userName} <br></br>`;
-  let logoutBtn = document.createElement("button");
-  logoutBtn.innerText = "Log Out";
-  logoutBtn.id = "logoutBtn";
+  loggedinView.innerHTML = 
+    'Välkommen ' +currentUser + ', du är nu inloggad. <br></br> <button id="logoutBtn" >Log out</button>';
+  let logoutBtn = document.getElementById("logoutBtn");
 
   logoutBtn.addEventListener("click", () => {
-    loginBtn.remove(); /// nyaste sättet att plocka bort element!
-    loginContainer.remove(); /// nyaste sättet att plocka bort element!
+    createLoginField();
     localStorage.removeItem("userLoggedIn");
-    loginFormButton(); // här kommer våran knapp fram (testing)
   });
-  loggedinView.appendChild(logoutBtn);
 }
 
 window.onload = () => {
   const loggedInUser = localStorage.getItem("userLoggedIn");
   if (loggedInUser) {
     createLoggedInView(loggedInUser);
-    loginFormBtn.remove();
   } else {
-    loginFormButton();
+    createLoginField();
   }
 };
-
 
 export function validateChainBtn() {
   validateContainer.innerHTML = "";
@@ -80,18 +74,4 @@ export function validateChainBtn() {
     // validateChain();
     console.log("Jakob är bäst!");
   });
-
-export function loginFormButton() {
-  loginFormContainer.innerHTML = "";
-  let formButton = document.createElement("button");
-  formButton.innerText = "Login";
-  formButton.id = "loginFormBtn";
-  // loginFormContainer.innerHTML = '<button id="loginFormBtn" >Log in</button>';
-  // let loginFormBtn = document.getElementById("loginFormBtn");
-
-  formButton.addEventListener("click", () => {
-    createLoginField();
-    loginFormBtn.remove();
-  });
-  loginFormContainer.appendChild(formButton);
 }
