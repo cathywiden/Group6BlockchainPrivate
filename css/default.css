@@ -154,14 +154,85 @@ span {
 }
 
 h4 {
-  background-color: white;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.95);
   width: 80vw;
   height: 30vh;
-  z-index: 99;
-  font-size: 2ch;
+  font-size: 2rem;
   color: rgb(171, 49, 171);
 }
 
+#loginFormBtn {
+  width: 120px;
+  height: 40px;
+  background-color: black;
+  color: white;
+  border: 2px solid rgb(171, 49, 171);
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+#loginFormBtn:hover {
+  background-color: white;
+  color: black;
+}
+#loginContainer {
+  position: relative;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.95);
+  z-index: 1;
+}
+
 #loginBtn {
-  background-color: rgb(210, 190, 40);
+  background-color: black;
+  color: white;
+  border: 2px solid rgb(171, 49, 171);
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin: 10px;
+}
+#loginBtn:hover {
+  background-color: white;
+  color: black;
+}
+#userName,
+#passWord,
+#loginBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 300px;
+  font-size: 20px;
+  margin: 10px;
+  z-index: 999;
+}
+#logoutBtn {
+  width: 30vh;
+  height: 7vh;
+  background-color: black;
+  color: white;
+  border: 2px solid rgb(171, 49, 171);
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin: 10px;
+}
+
+#logoutBtn:hover {
+  background-color: white;
+  color: black;
 }

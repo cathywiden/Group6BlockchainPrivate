@@ -18,7 +18,7 @@ function createLoginField() {
   //CREATES LOGIN INPUTFIELD AND BUTTON
 
   loginContainer.innerHTML =
-    '<input id="userName" type="text" placeholder="Username"><input id="passWord" type="password" placeholder="Password"></input><button id="loginBtn">Log in</button>';
+    '<input id="userName" type="text" placeholder="Username"><br><input id="passWord" type="password" placeholder="Password"></input><br><button id="loginBtn">Log in</button>';
   let loginBtn = document.getElementById("loginBtn");
 
   loginBtn.addEventListener("click", () => {
@@ -48,7 +48,10 @@ function createLoggedInView() {
 
   logoutBtn.addEventListener("click", () => {
     createLoginField();
+    loginContainer.style.display = "none";
+    loginBtn.style.display = "none";
     localStorage.removeItem("userLoggedIn");
+    loginFormButton(); // här kommer våran knapp fram (testing)
   });
 }
 
@@ -56,7 +59,23 @@ window.onload = () => {
   const loggedInUser = localStorage.getItem("userLoggedIn");
   if (loggedInUser) {
     createLoggedInView(loggedInUser);
+    loginFormBtn.style.display = "none";
   } else {
-    createLoginField();
+    loginFormButton();
   }
 };
+
+export function loginFormButton() {
+  loginFormContainer.innerHTML = "";
+  let formButton = document.createElement("button");
+  loginFormContainer.appendChild(formButton);
+  loginFormContainer.innerHTML = '<button id="loginFormBtn" >Log in</button>';
+  let loginFormBtn = document.getElementById("loginFormBtn");
+
+  loginFormBtn.addEventListener("click", () => {
+    createLoginField();
+    loginFormBtn.style.display = "none";
+    loginContainer.style.display = "block";
+    loginBtn.style.display = "block";
+  });
+}
