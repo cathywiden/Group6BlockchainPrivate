@@ -39,12 +39,12 @@ function createLoginField() {
 
 function createLoggedInView() {
   //CREATES THE VIEW THAT LOGGED IN USER SEES +LOGOUT BTN
-
+  let currentUser = localStorage.getItem("userLoggedIn");
   loginContainer.innerHTML = "";
   let loggedinView = document.createElement("h4");
   loginContainer.appendChild(loggedinView);
-  loggedinView.innerHTML =
-    'Välkommen, du är nu inloggad <br></br> <button id="logoutBtn" >Log out</button>';
+  loggedinView.innerHTML = 
+    'Välkommen ' +currentUser + ', du är nu inloggad. <br></br> <button id="logoutBtn" >Log out</button>';
   let logoutBtn = document.getElementById("logoutBtn");
 
   logoutBtn.addEventListener("click", () => {
