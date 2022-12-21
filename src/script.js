@@ -8,6 +8,8 @@ import { default as Chain } from "/src/blockchain/chain.js";
 import { calculateHash } from "/src/blockchain/calculateHash.js";
 import { createLoginField } from "/src/logInAndOut.js";
 import { validateChainBtn } from "/src/logInAndOut.js";
+import { validateChain } from "/src/blockchain/validateChain.js";
+
 
 //=====================================//
 //===========GLOBAL VARIABLES==========//
@@ -25,11 +27,12 @@ rollApi(searchButton, input);
 createLoginField();
 validateChainBtn();
 
-//------ Testa Bockkedjan ------//
-// let first = new Chain();
-// first.addBlock("första blocket");
-// first.addBlock("andra blocket");
-// first.addBlock("tredje blocket");
-// console.log(Chain);
-// console.log(Block);
-// console.log(first);
+let first = new Chain();
+first.addBlock("första blocket");
+first.addBlock("andra blocket");
+first.addBlock("tredje blocket");
+console.log(Chain);
+console.log(Block);
+console.log(first);
+
+console.log(validateChain(Chain));
