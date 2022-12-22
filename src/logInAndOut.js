@@ -49,18 +49,34 @@ function createLoggedInView() {
   loggedinView.innerHTML =
     "Välkommen " +
     currentUser +
-    ', du är nu inloggad <br></br> <button id="logoutBtn" >Log out</button><br><br><button id="logIt">Log my location</button>';
-  let logoutBtn = document.getElementById("logoutBtn");
+    ', du är nu inloggad <br></br> <button id="logItBtn">Log my location</button><button id="viewMyBlocksBtn">View my saved locations</button><br><br><button id="logoutBtn" >Log out</button>';
+  let logoutBtn = document.getElementById("logoutBtn"); 
 
   logoutBtn.addEventListener("click", () => {
     createLoginField();
     localStorage.removeItem("userLoggedIn");
   });
-  let logIt = document.getElementById("logIt");
-  logIt.addEventListener("click", () => {
+
+  let logItBtn = document.getElementById("logItBtn");
+
+  logItBtn.addEventListener("click", () => {
     console.log("button works");
     first.addBlock();
     console.log(first);
+  });
+
+  let viewMyBlocksBtn = document.getElementById("viewMyBlocksBtn");
+
+  viewMyBlocksBtn.addEventListener("click", () => {  ////NEW BUTTON 221222
+    let loggedInUser = localStorage.getItem("userLoggedIn");
+    console.log("Loggedinuser: " +loggedInUser);
+
+    let mySavedBlocks = first.filter(function (block) {
+      return block.user === loggedInUser;
+    });
+
+    console.log("mySavedBlocks: " + mySavedBlocks);
+
   });
 }
 
