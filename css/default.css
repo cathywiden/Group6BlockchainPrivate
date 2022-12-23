@@ -167,7 +167,26 @@ h4 {
 }
 
 #validateBtn {
+  position:fixed;
+  top: 1vh;
+  left: 1vw;
   background-color: rgb(32, 167, 32);
   width: 100px;
   height: 100px;
+}
+
+#newH2 {
+  padding: 20px;
+  padding-right: 150px;
+  font-size: 1.8ch;
+  background-color: rgb(171, 49, 171);
+  color: black;
+  inline-size: min-content;
+}
+
+.displayBoxes {
+  font-size: 1.2ch;
+  border: 1px solid black;
+  padding: 5px; 
+  margin: 5px;
 }

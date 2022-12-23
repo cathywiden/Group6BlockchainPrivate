@@ -49,8 +49,9 @@ function createLoggedInView() {
   loggedinView.innerHTML =
     "Välkommen " +
     currentUser +
-    ', du är nu inloggad <br></br> <button id="logItBtn">Log my location</button><button id="viewMyBlocksBtn">View my saved locations</button><br><br><button id="logoutBtn" >Log out</button>';
-  let logoutBtn = document.getElementById("logoutBtn"); 
+    ', du är nu inloggad <br></br> <button id="logItBtn">Log my location</button><button id="viewMyBlocksBtn">View my saved locations</button><br></br><button id="logoutBtn" >Log out</button><br></br><h3 id="newH3"></h3>';
+    let logoutBtn = document.getElementById("logoutBtn"); 
+  
 
   logoutBtn.addEventListener("click", () => {
     createLoginField();
@@ -77,8 +78,21 @@ function createLoggedInView() {
     
       return block.data.user === loggedInUser;
     });
-    console.log("mySavedBlocks: " +JSON.stringify(mySavedBlocks)); //VISAR DEN NYA ARRAYEN
-  });
+
+    let parentEl = document.getElementById("newH3");
+    let newH2 = document.createElement("h2");
+    parentEl.appendChild(newH2);
+    newH2.setAttribute("id", "newH2");
+    newH2.innerHTML="Här är dina sparade block";
+    
+    for (let i=0; i<mySavedBlocks.length; i++) {
+      let item = document.createElement("li", "br");
+      item.setAttribute("class", "displayBoxes");
+      newH2.appendChild(item);
+      item.innerHTML=JSON.stringify(mySavedBlocks[i]);
+      i++;
+    }
+  })
 }
 
 
