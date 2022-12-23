@@ -70,14 +70,14 @@ function createLoggedInView() {
   viewMyBlocksBtn.addEventListener("click", () => {  ////NEW BUTTON 221222
     let loggedInUser = localStorage.getItem("userLoggedIn");
     console.log("Loggedinuser: " +loggedInUser);
-
-    let mySavedBlocks = first.filter(function (block) {
+    console.log("first " + JSON.stringify(first));
+    let mySavedBlocks = first.blockChain.filter(function (block) {
+    
       return block.user === loggedInUser;
     });
-
-    console.log("mySavedBlocks: " + mySavedBlocks);
-
+    console.log("mySavedBlocks: " +mySavedBlocks);
   });
+  
 }
 
 window.onload = () => {
