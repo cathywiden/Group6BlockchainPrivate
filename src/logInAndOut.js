@@ -68,17 +68,19 @@ function createLoggedInView() {
   let viewMyBlocksBtn = document.getElementById("viewMyBlocksBtn");
 
   viewMyBlocksBtn.addEventListener("click", () => {  ////NEW BUTTON 221222
-    let loggedInUser = localStorage.getItem("userLoggedIn");
-    console.log("Loggedinuser: " +loggedInUser);
-    console.log("first " + JSON.stringify(first));
-    let mySavedBlocks = first.blockChain.filter(function (block) {
+    let loggedInUser = localStorage.getItem("userLoggedIn");  //HÄMTAR LOGGEDINUSER FRÅN LS
+    console.log("Loggedinuser är: " +loggedInUser);  //LOGGED IN USER
+    console.log("first.blockChain är: " +JSON.stringify(first.blockChain)); //VISAR BLOCKKEDJAN
+    console.log("first.blockChain[1].user är: " +JSON.stringify(first.blockChain[1].data.user)); //VISAR VEM SOM SKAPAT BLOCK NR 2
+   
+    let mySavedBlocks = first.blockChain.filter(function (block) {  //FILTRERAR UT DE BLOCK SOM LOGGED IN USER HAR SKAPAT I BLOCKKEDJAN OCH LÄGGER I NY ARRAY
     
-      return block.user === loggedInUser;
+      return block.data.user === loggedInUser;
     });
-    console.log("mySavedBlocks: " +mySavedBlocks);
+    console.log("mySavedBlocks: " +JSON.stringify(mySavedBlocks)); //VISAR DEN NYA ARRAYEN
   });
-  
 }
+
 
 window.onload = () => {
   const loggedInUser = localStorage.getItem("userLoggedIn");
