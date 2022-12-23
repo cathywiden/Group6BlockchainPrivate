@@ -114,7 +114,7 @@ export function validateChainBtn() {
   let validateBtn = document.getElementById("validateBtn");
 
   validateBtn.addEventListener("click", () => {
-    // validateChain();
+    validateChain(first);
     console.log("Jakob är bäst!");
   });
 }
