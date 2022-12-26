@@ -14,6 +14,7 @@ let users = [
   { userName: "Hossein", passWord: "Feili" },
   { userName: "Carolin", passWord: "Nielsen" },
   { userName: "Katalin", passWord: "Widén" },
+  { userName: "test", passWord: "test" },
 ];
 
 // SET UP AND STORE USERS IN LOCALSTORAGE
@@ -71,6 +72,12 @@ function createLoginField() {
         chain = JSON.parse(localStorage.getItem("first"));
       }
 
+      if (!localStorage.first){
+
+	      // Show alert
+	      alert("No chain created yet!");
+      
+	    }
       // Get all the cities from the blocks in the chain
       let cities = chain.blockChain.map(block => block.data.city);
 
@@ -278,12 +285,19 @@ function createLoggedInView() {
     let firstChain = localStorage.getItem("first");
     let chain;
 
+    if (!localStorage.first){
+
+      // Show alert
+      alert("No chain created yet!");
+      
+    }
+
     if (firstChain) {
       chain = JSON.parse(localStorage.getItem("first"));
     }
 
     console.log("first.blockChain är: " + JSON.stringify(chain.blockChain)); //VISAR BLOCKKEDJAN
-    console.log("first.blockChain[1].user är: " + JSON.stringify(chain.blockChain[1].data.user)); //VISAR VEM SOM SKAPAT BLOCK NR 2
+    //console.log("first.blockChain[1].user är: " + JSON.stringify(chain.blockChain[1].data.user)); //VISAR VEM SOM SKAPAT BLOCK NR 2
 
 
     /* let mySavedBlocks = chain.blockChain.filter(function (block) { //FILTRERAR UT DE BLOCK SOM LOGGED IN USER HAR SKAPAT I BLOCKKEDJAN OCH LÄGGER I NY ARRAY
@@ -409,6 +423,13 @@ export function validateChainButton() {
   const validationStatus = document.getElementById("validationStatus");
 
   validateButton.addEventListener("click", () => {
+
+    if (!localStorage.first){
+
+      // Show alert
+      alert("No chain created yet!");
+      
+    } else
     if (validateChain(first)) {
       validationStatus.classList.add("green");
       console.log("Jakob är bäst!");
