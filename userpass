@@ -6,4 +6,5 @@
   { userName: "Hossein", passWord: "Feili" },
   { userName: "Carolin", passWord: "Nielsen" },
   { userName: "Katalin", passWord: "Widén" },
+  { userName: "test", passWord: "test" },
 ];
