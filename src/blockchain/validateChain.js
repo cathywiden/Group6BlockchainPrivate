@@ -1,5 +1,10 @@
 export function validateChain(chain) {
 
+  if (!localStorage.first){
+       // Show alert
+       alert("No chain created yet!");
+      
+      }
 
   for (let i = 1; i < chain.blockChain.length; i++) {
   const currentBlock = chain.blockChain[i];
@@ -13,8 +18,9 @@ export function validateChain(chain) {
   if (currentBlock.previousHash !== previousBlock.hash) {
     console.log(`Invalid previous hash for block ${i + 1}`);
     return false;
+  } 
   }
-  }
+
   console.log("Chain is valid");
   return true;
 }
