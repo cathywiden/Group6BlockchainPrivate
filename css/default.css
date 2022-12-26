@@ -5,11 +5,17 @@
   font-family: "Rubik", sans-serif;
 }
 
+.bold-text {
+  font-weight: bold;
+}
+
 .firstBackground {
   position: relative;
   height: 100vh;
+  width: 100vw;
   background: url(/img/MB.jpg) center center / cover;
 }
+
 span {
   color: rgb(171, 49, 171);
 }
@@ -19,24 +25,21 @@ span {
   width: 100vw;
   z-index: 0;
 }
+
 #geoG {
   color: rgb(31, 19, 161);
 }
+
 #geo {
   font-size: 3rem;
   font-style: italic;
   color: rgb(171, 49, 171);
 }
+
 #mi {
   font-size: 2rem;
   font-style: italic;
   color: rgb(210, 190, 40);
-}
-
-#map {
-  height: 65vh;
-  width: 100vw;
-  z-index: 0;
 }
 
 .container {
@@ -64,7 +67,7 @@ span {
 .searchBox {
   background-color: white;
   width: 35vw;
-  height: 8vh;
+  height: 6vh;
   justify-self: center;
   border-radius: 15px;
   display: grid;
@@ -111,6 +114,38 @@ span {
   opacity: 0.7;
 }
 
+
+/* GPS icon in input field */
+.gpsWrapper {
+  position: relative; /* required for the pseudo-element to work */
+  pointer-events: mouse;
+}
+
+.gpsIcon {
+  /* adjust the size and position of the icon as needed */
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer; /* change the cursor to a hand when hovering over the icon */
+}
+
+/* GPS icon in input field (active --> event listener) */
+.gpsWrapper::before {
+  
+  background-image: url(../img/location.png);
+  background-size: 35px 35px; /* adjust the size of the icon */
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer; /* change the cursor to a hand when hovering over the icon */
+}
+
 .infoBox {
   width: 70vw;
   height: 20vh;
@@ -153,48 +188,159 @@ span {
   justify-self: center;
 }
 
+ul {
+  list-style-type: none;
+}
+
+#loggedinView {
+  margin-top: 20px;
+}
+
+#loggedinView p {
+  color: black;
+}
+
 h4 {
   background-color: white;
-  width: 80vw;
-  height: 30vh;
+  width: 70vw;
+  height: 18vh;
   z-index: 99;
   font-size: 2ch;
+  font-weight: 100;
   color: rgb(171, 49, 171);
+  border-radius: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-#loginBtn {
-  background-color: rgb(210, 190, 40);
-}
-
-#validateBtn {
-  position: fixed;
-  top: 1vh;
-  left: 1vw;
-  background-color: rgb(32, 167, 32);
-  width: 100px;
-  height: 100px;
+h5 {
+  font-size: 2ch;
 }
 
 #newH2 {
-  padding: 20px;
-  padding-right: 150px;
+  width: 700px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-bottom: 10px; 
   font-size: 1.8ch;
-  background-color: rgb(171, 49, 171);
+  background-color: white;
+  border: 3px solid rgb(171, 49, 171);
   color: black;
   inline-size: min-content;
+  border-radius: 15px;
 }
+
+
+#newH3 {
+  background-color: white;
+  border-radius: 15px;
+  width: 350px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: left;
+  margin: 0 auto; /* horizontally center the element */
+} 
 
 .displayBoxes {
   font-size: 1.2ch;
-  border: 1px solid black;
-  padding: 5px;
-  margin: 5px;
+  border: 1px solid rgb(171, 49, 171);
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+  width: 100%;
+}
+
+li.displayBoxes {
+  list-style: none;
+  font-weight: 100;
+}
+
+
+.hash:hover {
+  background-color: rgb(209, 204, 204);
+}
+
+
+.hash[data-hash]:hover {
+  background-color:rgb(209, 204, 204);
 }
 
 #secondBackground {
   position: relative;
-  height: 100vh;
+  height: 1000vh;
   width: 100vw;
-  height: 100vh;
   background-color: black;
+  background-attachment: scroll; /* doesn*t work here */
+}
+
+.styled-button {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding-top: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  cursor: pointer;
+}
+
+.styled-button:hover {
+  border-color: rgb(171, 49, 171);
+  color: rgb(171, 49, 171);
+}
+
+.styled-button-white {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding-top: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.styled-button-white:hover {
+  border-color: rgb(171, 49, 171);
+  color: rgb(171, 49, 171);
+  box-shadow: 0 0 6px white; /* Glow on Validate button*/
+}
+
+.styled-input {
+  border-radius: 5px;
+  border: 2px solid black;
+  padding-top: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+}
+
+#validateButton {
+  position: fixed;
+  display: flex;
+  bottom: 5px;
+  left: 5px;
+}
+
+#validateButton:hover {
+  opacity: 80%;
+}
+
+#validationStatus::before {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  content: "";
+}
+
+#validationStatus.red::before {
+  background-color: red;
+}
+
+#validationStatus.green::before {
+  background-color: green;
 }

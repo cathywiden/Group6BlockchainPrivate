@@ -1,0 +1,9 @@
+Not possible to log in from some browsers with very tight settings that block scripts. 
+Try another browser! 
+
+I - Cathy - can use everything with my Opera, Firefox and Chrome, but can't log in with Chrome Canary or the built-in VSC window. 
+
+
+When you fill in the IP field with an address and you go back and delete it, the API often responds with 404 error.
+
+
