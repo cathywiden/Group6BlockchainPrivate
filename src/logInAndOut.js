@@ -1,7 +1,7 @@
 export { createLoginField };
-import { default as Chain } from "/src/blockchain/chain.js";
-import { validateChain } from "./blockchain/validateChain.js";
-import { default as Block } from "/src/blockchain/block.js";
+import { default as Chain } from "../src/blockchain/chain.js";
+import { validateChain } from "../src/blockchain/validateChain.js";
+import { default as Block } from "../src/blockchain/block.js";
 
 
 let first = new Chain();
