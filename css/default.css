@@ -135,7 +135,7 @@ span {
 /* GPS icon in input field (active --> event listener) */
 .gpsWrapper::before {
   
-  background: url("../img/location.png");
+  background-image: url("../img/location.png");
   background-size: 35px 35px; /* adjust the size of the icon */
   width: 30px;
   height: 30px;
