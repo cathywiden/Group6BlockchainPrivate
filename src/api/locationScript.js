@@ -5,7 +5,7 @@ export function rollApi(searchButton, input) {
 
         let ip = input.value;
 
-        const geoLocateURL = `http://ip-api.com/json/${ip}`;
+        const geoLocateURL = `https://pro.ip-api.com/json/${ip}?key=9BAcV4pyOZqNH2j`;
         fetch(geoLocateURL)
             .then(response => response.json())
             .then(data => {
