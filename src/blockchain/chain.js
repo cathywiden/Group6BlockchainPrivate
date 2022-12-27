@@ -1,5 +1,5 @@
-import { default as Block } from "../src/block.js"; //OR CHANGE TO WHATEVER THE BLOCK CLASS IS CALLED
-import { calculateHash } from "../src/blockchain/calculateHash.js";
+import { default as Block } from "/blockchain/block.js"; //OR CHANGE TO WHATEVER THE BLOCK CLASS IS CALLED
+import { calculateHash } from "/blockchain/calculateHash.js";
 
 export default class Chain {
   // FOR CREATION OF: let blockChain = new Chain(); in script.js
