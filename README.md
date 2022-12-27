@@ -4,6 +4,9 @@ Group 6 assignment
 
 **BUILD A BLOCKCHAIN-BASED WEB APPLICATION PROROTYPE**
 
+**FOR CODE REVIEW
+Please don't use the our Page. Turning the project into a Page killed the ip-api that does the IP lookup -- which now forces us to use https:// protocol and for that, suddenly it wants our $$. Instead, please, get the folder as a zip file and check in a browser window, it then works flawless.**
+
 
 **Short summary**
 
