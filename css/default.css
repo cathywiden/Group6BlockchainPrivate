@@ -13,7 +13,7 @@
   position: relative;
   height: 100vh;
   width: 100vw;
-  background: url(/img/MB.jpg) center center / cover;
+  background: url("../img/MB.jpg") center center / cover;
 }
 
 span {
