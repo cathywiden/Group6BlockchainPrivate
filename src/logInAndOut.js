@@ -72,12 +72,12 @@ function createLoginField() {
         chain = JSON.parse(localStorage.getItem("first"));
       }
 
-      if (!localStorage.first){
+      if (!localStorage.first) {
 
-	      // Show alert
-	      alert("No chain created yet!");
-      
-	    }
+        // Show alert
+        alert("No chain created yet!");
+
+      }
       // Get all the cities from the blocks in the chain
       let cities = chain.blockChain.map(block => block.data.city);
 
@@ -184,9 +184,9 @@ function createLoggedInView() {
   loginContainer.appendChild(loggedinView);
 
   loggedinView.innerHTML =
-  '<br><strong>Welcome, ' +
-  currentUser +
-  ', you have logged in!</strong> <br></br> <p style="color: black">Enter an address, or click the location icon to fetch your location data.<br> Click the <span style="color: rgb(171, 49, 171);"><strong>arrow</strong></span> to the right to log your data on the chain. <br><br><button id="logoutButton" class="styled-button">Log out</button> <span>&nbsp;</span> <button id="viewMyBlocksButton" class="styled-button">View my saved locations</button><br></br><h3 id="newH3"></h3>';
+    '<br><strong>Welcome, ' +
+    currentUser +
+    ', you have logged in!</strong> <br></br> <p style="color: black">Enter an address, or click the location icon to fetch your location data.<br> Click the <span style="color: rgb(171, 49, 171);"><strong>arrow</strong></span> to the right to log your data on the chain. <br><br><button id="logoutButton" class="styled-button">Log out</button> <span>&nbsp;</span> <button id="viewMyBlocksButton" class="styled-button">View my saved locations</button><br></br><h3 id="newH3"></h3>';
 
   let logoutButton = document.getElementById("logoutButton");
 
@@ -211,60 +211,72 @@ function createLoggedInView() {
     } else {
 
       // User is logged in, so proceed with adding a new block to the chain
-      // CHECK IF CHAIN EXISTS IN LOCAL STORAGE
-      let chain;
 
-      try {
-        const firstChain = localStorage.getItem("first");
+      // CHECK IF LOCATION DATA IS AVAILABLE
+      const locationInfo = document.getElementsByClassName("locationInfo")[0];
 
-        if (!firstChain) {
+      if (!locationInfo || !locationInfo.textContent) {
+        // location data is not available
+        alert("No valid location data is available. Please enter a valid address or IP address.");
 
-          // no valid chain in LS --> create one and store in LS
-          chain = new Chain();
+      } else {
+        // location data is available
 
-          console.log("Created new chain");
+        // CHECK IF CHAIN EXISTS IN LOCAL STORAGE
+        let chain;
 
-          console.log("test1", chain instanceof Chain);
-          console.log("chain before going into LS", chain);
+        try {
+          const firstChain = localStorage.getItem("first");
 
-          localStorage.setItem("first", JSON.stringify(chain));
+          if (!firstChain) {
 
-          console.log("genesis block", chain.getLatestBlock()); // correctly logs first block
+            // no valid chain in LS --> create one and store in LS
+            chain = new Chain();
 
-        } else {
-          // RETRIEVE CHAIN FROM LOCAL STORAGE AND ADD NEW BLOCK
+            console.log("Created new chain");
 
-          chain = JSON.parse(localStorage.getItem("first"));
-          Object.setPrototypeOf(chain, Chain.prototype); // when we fetch an object from LS, prototype needs to be reassigned. Methods like addBlock() can only be used if we regenerate the chain object (Chain.prototype)
+            console.log("test1", chain instanceof Chain);
+            console.log("chain before going into LS", chain);
 
-          console.log("test2", chain instanceof Chain); // true
-          console.log("chain fetched from LS", chain);
+            localStorage.setItem("first", JSON.stringify(chain));
 
-          // recreate Blocks:
-          // create new array [blocks] consisting of Block objects from chain data
-          // new Block is created to recreate data, newHash and PrebiousHash properties in the blockChain array
-          const blocks = chain.blockChain.map(item => new Block(item.data, item.newHash, item.previousHash));
-          //chain.addBlock(new Block(Chain.chain.map(item => item))); // Janne's magic
+            console.log("genesis block", chain.getLatestBlock()); // correctly logs first block
+
+          } else {
+            // RETRIEVE CHAIN FROM LOCAL STORAGE AND ADD NEW BLOCK
+
+            chain = JSON.parse(localStorage.getItem("first"));
+            Object.setPrototypeOf(chain, Chain.prototype); // when we fetch an object from LS, prototype needs to be reassigned. Methods like addBlock() can only be used if we regenerate the chain object (Chain.prototype)
+
+            console.log("test2", chain instanceof Chain); // true
+            console.log("chain fetched from LS", chain);
+
+            // recreate Blocks:
+            // create new array [blocks] consisting of Block objects from chain data
+            // new Block is created to recreate data, newHash and PrebiousHash properties in the blockChain array
+            const blocks = chain.blockChain.map(item => new Block(item.data, item.newHash, item.previousHash));
+            //chain.addBlock(new Block(Chain.chain.map(item => item))); // Janne's magic
 
 
-          console.log("chain after mapping", chain);
-          console.log("Cathy is a Class of her own -- a Goddess.prototype")
+            console.log("chain after mapping", chain);
+            console.log("Cathy is a Class of her own -- a Goddess.prototype")
 
-          chain.getLatestBlock();
-          console.log("latest block before adding new", chain.getLatestBlock());
+            chain.getLatestBlock();
+            console.log("latest block before adding new", chain.getLatestBlock());
 
-          await chain.addBlock(); // so that it has enough time to hash
+            await chain.addBlock(); // so that it has enough time to hash
 
-          chain.getLatestBlock();
-          console.log("latest block after adding new", chain.getLatestBlock());
-          console.log("chain after adding a block", chain);
+            chain.getLatestBlock();
+            console.log("latest block after adding new", chain.getLatestBlock());
+            console.log("chain after adding a block", chain);
 
-          localStorage.setItem("first", JSON.stringify(chain));
+            localStorage.setItem("first", JSON.stringify(chain));
+          }
         }
-      }
-      catch (error) {
-        console.error(error);
-        alert("An error occurred while updating the chain. Please try again.");
+        catch (error) {
+          console.error(error);
+          alert("An error occurred while updating the chain. Please try again.");
+        }
       }
     }
   });
@@ -275,7 +287,7 @@ function createLoggedInView() {
   let viewMyBlocksButton = document.getElementById("viewMyBlocksButton");
   viewMyBlocksButton.className = "styled-button";
 
-  viewMyBlocksButton.addEventListener("click", () => { ////NEW BUTTON 221222
+  viewMyBlocksButton.addEventListener("click", () => {
 
     // GENERATE LIST FROM LS FETCHED DATA
 
@@ -285,11 +297,11 @@ function createLoggedInView() {
     let firstChain = localStorage.getItem("first");
     let chain;
 
-    if (!localStorage.first){
+    if (!localStorage.first) {
 
       // Show alert
       alert("No chain created yet!");
-      
+
     }
 
     if (firstChain) {
@@ -424,17 +436,17 @@ export function validateChainButton() {
 
   validateButton.addEventListener("click", () => {
 
-    if (!localStorage.first){
+    if (!localStorage.first) {
 
       // Show alert
       alert("No chain created yet!");
-      
+
     } else
-    if (validateChain(first)) {
-      validationStatus.classList.add("green");
-      console.log("Jakob är bäst!");
-    } else {
-      validationStatus.classList.add("red");
-    }
+      if (validateChain(first)) {
+        validationStatus.classList.add("green");
+        console.log("Jakob är bäst!");
+      } else {
+        validationStatus.classList.add("red");
+      }
   });
 }
