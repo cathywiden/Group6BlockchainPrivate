@@ -159,8 +159,8 @@ span {
 }
 
 .ip,
-.timezone,
-.isp,
+.longitude,
+.latitude,
 .location {
   display: grid;
   grid-template-rows: 0.4fr 1fr;
