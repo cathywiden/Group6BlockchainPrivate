@@ -114,59 +114,71 @@ function createLoginField() {
       // Get the local time in the format "hh:mm:ss"
       let localTime = date.toLocaleTimeString();
 
-      // Display the top five cities
+      // Display the top three cities
       let topThreeCities = sortedCities.slice(0, 3);
       let parentEl = document.getElementById("newH3");
 
-      // Add an empty line before the header
-      let emptyLine = document.createElement("br");
-      parentEl.appendChild(emptyLine);
 
-      // Add a header to the list
-      let header = document.createElement("h3");
-      header.innerHTML = "Top locations logged by our system";
-      parentEl.appendChild(header);
+      // TOGGLE: display list on first click, remove list on clicking again
+      // Check if the list is already displayed
+      if (parentEl.getElementsByTagName("ul").length > 0) {
+        // List is already displayed, so remove it
+        parentEl.innerHTML = ""; // ahh, finally!! Toggle the entire newH3
 
-      // Add an empty line after the header
-      parentEl.appendChild(document.createElement("br"));
+      } else {
 
-      // Create the list element
-      let list = document.createElement("ul");
-      parentEl.appendChild(list);
+        // List is not displayed, so add it
 
-      // Loop through the top three cities and add them to the list along with the corresponding country and number of blocks logged from that city
-      topThreeCities.forEach((city, index) => {
-        let item = document.createElement("li");
-        item.innerHTML = `${city}, ${cityToCountry[city]} [logged ${cityCounts[city]} times]`;
-        list.appendChild(item);
+        // Add an empty line before the header
+        let emptyLine = document.createElement("br");
+        parentEl.appendChild(emptyLine);
 
-      });
+        // Add a header to the list
+        let header = document.createElement("h3");
+        header.innerHTML = "Top locations logged by our system";
+        parentEl.appendChild(header);
 
-      // Add an empty line before "Last block added from"
-      list.appendChild(document.createElement("br"));
+        // Add an empty line after the header
+        parentEl.appendChild(document.createElement("br"));
 
-      // Create a header element for the latest block information
-      let latestBlockHeader = document.createElement("h5");
-      latestBlockHeader.innerHTML = "Last block added from";
+        // Create the list element
+        let list = document.createElement("ul");
+        parentEl.appendChild(list);
 
-      // Create a paragraph element for last block information
-      let latestBlockParagraph = document.createElement("p");
-      latestBlockParagraph.innerHTML = `${newestBlockCity}, ${newestBlockCountry}, ${localTime}`;
+        // Loop through the top three cities and add them to the list along with the corresponding country and number of blocks logged from that city
+        topThreeCities.forEach((city, index) => {
+          let item = document.createElement("li");
+          item.innerHTML = `${city}, ${cityToCountry[city]} [logged ${cityCounts[city]} times]`;
+          list.appendChild(item);
 
-      let latestBlock = document.createElement("li");
+        });
 
-      // Append the header and paragraph elements to the list item
-      latestBlock.appendChild(latestBlockHeader);
-      latestBlock.appendChild(latestBlockParagraph);
+        // Add an empty line before "Last block added from"
+        list.appendChild(document.createElement("br"));
 
-      // Append the list item to the list
-      list.appendChild(latestBlock);
+        // Create a header element for the latest block information
+        let latestBlockHeader = document.createElement("h5");
+        latestBlockHeader.innerHTML = "Last block added from";
 
-      // Add an empty line after the list item
-      list.appendChild(document.createElement("br"));
+        // Create a paragraph element for last block information
+        let latestBlockParagraph = document.createElement("p");
+        latestBlockParagraph.innerHTML = `${newestBlockCity}, ${newestBlockCountry}, ${localTime}`;
+
+        let latestBlock = document.createElement("li");
+
+        // Append the header and paragraph elements to the list item
+        latestBlock.appendChild(latestBlockHeader);
+        latestBlock.appendChild(latestBlockParagraph);
+
+        // Append the list item to the list
+        list.appendChild(latestBlock);
+
+        // Add an empty line after the list item
+        list.appendChild(document.createElement("br"));
+
+      }
 
     }
-
   });
 
 }
@@ -194,6 +206,7 @@ function createLoggedInView() {
     createLoginField();
     localStorage.removeItem("userLoggedIn");
   });
+
 
   // STORE CHAIN IN LOCALSTORAGE -- ONLY AVAILABLE FOR LOGGED-IN USERS
 
@@ -317,9 +330,10 @@ function createLoggedInView() {
     return block.data.user === loggedInUser;
     }); */
 
-    // I put the above in a function to be able to toggle (but too brain-dead to fix the toggle anyway) 
-    // I modified so that it displays actual block number in the chain, not necessarily starting from 1 for the current user
+
+    // I modified so that it displays actual block number in the chain, not necessarily starting from 1 for the current user:
     function getMySavedBlocks(chain, loggedInUser) {
+      
       return chain.blockChain.filter(function (block, index) {
         block.blockNumber = index + 1; // add blockNumber property to block
         return block.data.user === loggedInUser;
@@ -333,6 +347,14 @@ function createLoggedInView() {
     parentEl.appendChild(newH2);
     newH2.setAttribute("id", "newH2");
     newH2.innerHTML = "Here are your saved blocks";
+
+ // TOGGLE: display list on first click, remove list on clicking again
+    // Check if the list is already displayed
+    if (parentEl.getElementsByTagName("li").length > 0) {
+      // List is already displayed, so remove it
+      parentEl.innerHTML = "";
+
+    } else {
 
     // GENERATE AND FILL THE DROP-DOWN TABLE
 
@@ -411,7 +433,7 @@ function createLoggedInView() {
         });
       });
     }
-  });
+  }});
 }
 
 
