@@ -279,11 +279,34 @@ function createLoggedInView() {
 
             await chain.addBlock(); // so that it has enough time to hash
 
+            // empty infoBox after successfull block addition
+            let infoBox = document.getElementsByClassName("infoBox")[0];
+            let searchInput = document.getElementsByClassName("searchInput")[0];
+
+            let emptyAllFields = infoBox.querySelectorAll(".ipInfo, .locationInfo, .longitudeInfo, .latitudeInfo");
+            emptyAllFields.forEach(formElement => formElement.textContent = "");
+            searchInput.value = "";
+
+            // ADD A VISUAL CONFIRMATION THAT A BLOCK HAS BEEN ADDED
+            // create a green pipe element
+            let greenPipe = document.createElement("div");
+            greenPipe.classList.add("greenPipe");
+
+            // insert the green pipe right before the GPS icon into the searchInput field
+            document.querySelector('.gpsIcon').insertAdjacentElement('beforebegin', greenPipe);
+
+            setTimeout(function () {
+              greenPipe.parentNode.removeChild(greenPipe);
+            }, 2000); // remove the green pipe element after 2 seconds
+
             chain.getLatestBlock();
             console.log("latest block after adding new", chain.getLatestBlock());
             console.log("chain after adding a block", chain);
 
+            // Put the chain in LS
+
             localStorage.setItem("first", JSON.stringify(chain));
+
           }
         }
         catch (error) {
@@ -333,7 +356,7 @@ function createLoggedInView() {
 
     // I modified so that it displays actual block number in the chain, not necessarily starting from 1 for the current user:
     function getMySavedBlocks(chain, loggedInUser) {
-      
+
       return chain.blockChain.filter(function (block, index) {
         block.blockNumber = index + 1; // add blockNumber property to block
         return block.data.user === loggedInUser;
@@ -348,7 +371,7 @@ function createLoggedInView() {
     newH2.setAttribute("id", "newH2");
     newH2.innerHTML = "Here are your saved blocks";
 
- // TOGGLE: display list on first click, remove list on clicking again
+    // TOGGLE: display list on first click, remove list on clicking again
     // Check if the list is already displayed
     if (parentEl.getElementsByTagName("li").length > 0) {
       // List is already displayed, so remove it
@@ -356,84 +379,85 @@ function createLoggedInView() {
 
     } else {
 
-    // GENERATE AND FILL THE DROP-DOWN TABLE
+      // GENERATE AND FILL THE DROP-DOWN TABLE
 
-    for (let i = 0; i < mySavedBlocks.length; i++) {
-      let item = document.createElement("li", "br");
-      item.setAttribute("class", "displayBoxes");
-      newH2.appendChild(item);
+      for (let i = 0; i < mySavedBlocks.length; i++) {
+        let item = document.createElement("li", "br");
+        item.setAttribute("class", "displayBoxes");
+        newH2.appendChild(item);
 
-      let blockNumber = document.createElement("p");
-      blockNumber.innerHTML = "Block " + mySavedBlocks[i].blockNumber; // display true block index (blockNumber) instead of starting from 1 for the current user
-      blockNumber.classList.add("bold-text");
-      item.appendChild(blockNumber);
+        let blockNumber = document.createElement("p");
+        blockNumber.innerHTML = "Block " + mySavedBlocks[i].blockNumber; // display true block index (blockNumber) instead of starting from 1 for the current user
+        blockNumber.classList.add("bold-text");
+        item.appendChild(blockNumber);
 
-      let userRow = document.createElement("p");
-      userRow.innerHTML = "User: " + mySavedBlocks[i].data.user;
-      item.appendChild(userRow);
+        let userRow = document.createElement("p");
+        userRow.innerHTML = "User: " + mySavedBlocks[i].data.user;
+        item.appendChild(userRow);
 
-      let longitudeRow = document.createElement("p");
-      longitudeRow.innerHTML = "Longitude: " + mySavedBlocks[i].data.longitude;
-      item.appendChild(longitudeRow);
+        let longitudeRow = document.createElement("p");
+        longitudeRow.innerHTML = "Longitude: " + mySavedBlocks[i].data.longitude;
+        item.appendChild(longitudeRow);
 
-      let latitudeRow = document.createElement("p");
-      latitudeRow.innerHTML = "Latitude: " + mySavedBlocks[i].data.latitude;
-      item.appendChild(latitudeRow);
+        let latitudeRow = document.createElement("p");
+        latitudeRow.innerHTML = "Latitude: " + mySavedBlocks[i].data.latitude;
+        item.appendChild(latitudeRow);
 
-      let cityRow = document.createElement("p");
-      cityRow.innerHTML = "City: " + mySavedBlocks[i].data.city;
-      item.appendChild(cityRow);
+        let cityRow = document.createElement("p");
+        cityRow.innerHTML = "City: " + mySavedBlocks[i].data.city;
+        item.appendChild(cityRow);
 
-      let countryRow = document.createElement("p");
-      countryRow.innerHTML = "Country: " + mySavedBlocks[i].data.country;
-      item.appendChild(countryRow);
+        let countryRow = document.createElement("p");
+        countryRow.innerHTML = "Country: " + mySavedBlocks[i].data.country;
+        item.appendChild(countryRow);
 
-      let timestampRow = document.createElement("p");
-      timestampRow.innerHTML = "Timestamp: " + mySavedBlocks[i].data.timestamp;
-      item.appendChild(timestampRow);
+        let timestampRow = document.createElement("p");
+        timestampRow.innerHTML = "Timestamp: " + mySavedBlocks[i].data.timestamp;
+        item.appendChild(timestampRow);
 
-      let timeRow = document.createElement("p");
-      timeRow.innerHTML = "Local Time: " + mySavedBlocks[i].timestamp.toString().split("(")[0]; // take away (Central European Standard Time)
-      item.appendChild(timeRow);
+        let timeRow = document.createElement("p");
+        timeRow.innerHTML = "Local Time: " + mySavedBlocks[i].timestamp.toString().split("(")[0]; // take away (Central European Standard Time)
+        item.appendChild(timeRow);
 
-      let previousHashRow = document.createElement("p");
-      previousHashRow.innerHTML = "Previous hash: " + mySavedBlocks[i].previousHash;
-      previousHashRow.setAttribute("data-hash", mySavedBlocks[i].previousHash);
-      previousHashRow.classList.add("hash");
-      item.appendChild(previousHashRow);
+        let previousHashRow = document.createElement("p");
+        previousHashRow.innerHTML = "Previous hash: " + mySavedBlocks[i].previousHash;
+        previousHashRow.setAttribute("data-hash", mySavedBlocks[i].previousHash);
+        previousHashRow.classList.add("hash");
+        item.appendChild(previousHashRow);
 
-      let newHashRow = document.createElement("p");
-      newHashRow.innerHTML = "New hash: " + mySavedBlocks[i].newHash;
-      newHashRow.setAttribute("data-hash", mySavedBlocks[i].newHash);
-      newHashRow.classList.add("hash");
-      item.appendChild(newHashRow);
+        let newHashRow = document.createElement("p");
+        newHashRow.innerHTML = "New hash: " + mySavedBlocks[i].newHash;
+        newHashRow.setAttribute("data-hash", mySavedBlocks[i].newHash);
+        newHashRow.classList.add("hash");
+        item.appendChild(newHashRow);
 
-      // HIGHLIGHT MATCHING HASHES IN DROP-DOWN TABLE
-      // Good for a quick check, user can see immediately that the chain is valid, not having to rely on just a button stating so
+        // HIGHLIGHT MATCHING HASHES IN DROP-DOWN TABLE
+        // Good for a quick check, user can see immediately that the chain is valid, not having to rely on just a button stating so
 
-      let hashElements = document.querySelectorAll(".hash");
+        let hashElements = document.querySelectorAll(".hash");
 
-      hashElements.forEach(function (hashElement) {
-        hashElement.addEventListener("mouseover", function (event) {
-          let dataHash = event.target.getAttribute("data-hash");
-          let hashSelector = `.hash[data-hash="${dataHash}"]`;
-          let matchingElements = document.querySelectorAll(hashSelector);
-          matchingElements.forEach(function (matchingElement) {
-            matchingElement.style.backgroundColor = "lightgrey";
+        hashElements.forEach(function (hashElement) {
+          hashElement.addEventListener("mouseover", function (event) {
+            let dataHash = event.target.getAttribute("data-hash");
+            let hashSelector = `.hash[data-hash="${dataHash}"]`;
+            let matchingElements = document.querySelectorAll(hashSelector);
+            matchingElements.forEach(function (matchingElement) {
+              matchingElement.style.backgroundColor = "lightgrey";
+            });
+          });
+
+          hashElement.addEventListener("mouseout", function (event) {
+            let dataHash = event.target.getAttribute("data-hash");
+            let hashSelector = `.hash[data-hash="${dataHash}"]`;
+            let matchingElements = document.querySelectorAll(hashSelector);
+            matchingElements.forEach(function (matchingElement) {
+              matchingElement.style.backgroundColor = "";
+            });
           });
         });
-
-        hashElement.addEventListener("mouseout", function (event) {
-          let dataHash = event.target.getAttribute("data-hash");
-          let hashSelector = `.hash[data-hash="${dataHash}"]`;
-          let matchingElements = document.querySelectorAll(hashSelector);
-          matchingElements.forEach(function (matchingElement) {
-            matchingElement.style.backgroundColor = "";
-          });
-        });
-      });
+      }
     }
-  }});
+  });
 }
 
 
