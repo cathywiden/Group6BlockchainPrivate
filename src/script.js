@@ -26,7 +26,6 @@ if (!localStorage.getItem("users")) {
   localStorage.setItem("users", JSON.stringify(users));
 }
 
-
 // oldScript --------------------------------------------
 console.log("SCRIPT: rollApi");
 rollApi(searchButton, input);
@@ -54,3 +53,11 @@ storeChainInLocalStorage();
 console.log("SCRIPT - loggedIn: viewMyBlocks");
 createValidateButton();
 // logInAndOut -------------------------------------------- 
+
+// disable page resize to narrower than 480 pixels
+window.addEventListener("resize", function() {
+  if (window.innerWidth < 480) {
+    event.preventDefault();
+    window.innerWidth = 480;
+  }
+});

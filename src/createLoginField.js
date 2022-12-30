@@ -5,8 +5,6 @@ import { displayPublicChainData } from "../src/blockchain/displayPublicChainData
 function createLoginField() {
   // CREATES LOGIN INPUT FIELD AND BUTTON
 
-  console.log("---- createLoginField ----");
-
   loginContainer.innerHTML =
     '<p style="color: white; font-weight: bold">For registered users</p><p style="color: white">Please, log in to add data to the chain.<br><br><input id="userName" type="text" placeholder="Username" class="styled-input"><input id="passWord" type="password" placeholder="Password" class="styled-input"></input><button id="loginButton" class="styled-button">Log in</button><br><br><br><p style="color: white; font-weight: bold">Public blockchain data</p><p style="color: white">We have worldwide coverage. Here, you can see a list of some of the most popular locations our system has been accessed from: <br><br><button id="frequentLocationsButton" class="styled-button">List locations</button><div id="newH3"></div><br><br>';
 
