@@ -79,6 +79,7 @@ span {
 .searchInput {
   resize: none;
   height: 90%;
+  width: 90%;
   margin: 0 1vw;
   border: none;
   line-height: 7vh;
@@ -343,4 +344,16 @@ li.displayBoxes {
 
 #validationStatus.green::before {
   background-color: green;
+}
+
+.greenPipe {
+  background-image: url("../img/greenpipe.png");
+  background-size: 45px 45px; 
+  width: 45px;
+  height: 45px;
+  margin-left: 20px;
+  position: absolute;
+  right: 45px;
+  top: 50%;
+  transform: translateY(-50%);
 }

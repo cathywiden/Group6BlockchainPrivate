@@ -92,10 +92,12 @@ export function rollApi(searchButton, input) {
         // If the input is an empty string or a valid IPv4 address, invoke geoLocate()
         if (!address || isValidIp(address)) {
             geoLocate();
+            
         }
         // If the input is not a valid IPv4 address and is not an empty string, assume it's an address and invoke geoCode()
         else if (address) {
             geoCode(address);
+            
         }
     });
 
