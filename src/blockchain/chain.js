@@ -9,6 +9,7 @@ export default class Chain {
   }
 
   createGenesisBlock() {
+
     // CREATES THE FIRST BLOCK ON THE CHAIN
     return new Block(
       { user: "Genesis", longitude: 0, latitude: 0 },
@@ -26,33 +27,15 @@ export default class Chain {
     //FETCH PREVIOUS BLOCK HASH
     return this.blockChain[this.blockChain.length - 1].newHash; //RETURNS PREVIOUS BLOCK'S HASH BUT SKIPS GENESISBLOCK
   }
-  /*
-    async addBlock() {
-      // FETCH DATA FROM LOCAL STORAGE
-      const user = localStorage.getItem("userLoggedIn");
-      const longitude = localStorage.getItem("longitude");
-      const latitude = localStorage.getItem("latitude");
-    
-      // CREATE NEW BLOCK OBJECT
-      const newBlock = { user, longitude, latitude }; // no timestamp???????????
-    
-      // CALCULATE HASH OF NEW BLOCK
-      const newBlockHash = await calculateHash(newBlock);
-    
-      // GET LATEST BLOCK IN CHAIN
-      const latestBlock = this.getLatestBlockHash(); // only hash goes into new block
-    
-      // PUSH NEW BLOCK TO CHAIN
-      this.blockChain.push(new Block(newBlock + latestBlock + newBlockHash));
-    } */
+  
   async addBlock() {
 
     // fetch loggedInUser + location data from LS
     const user = localStorage.getItem("userLoggedIn");
     const longitude = localStorage.getItem("longitude");
     const latitude = localStorage.getItem("latitude");
-    const city = localStorage.getItem("city"); // need that too to play with
-    const country = localStorage.getItem("country"); // and that one, too
+    const city = localStorage.getItem("city"); 
+    const country = localStorage.getItem("country"); 
 
     const timestamp = Date.now(); // (milliseconds)
     const randomNumber = Math.random();
