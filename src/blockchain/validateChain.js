@@ -1,7 +1,7 @@
 export { validateChain };
 
 // Retrieve the stored chain from local storage
-let storedChain = JSON.parse(localStorage.getItem("masterChain"));
+let chain = JSON.parse(localStorage.getItem("masterChain"));
 
 function validateChain(chain) {
   console.log(chain);
@@ -43,4 +43,4 @@ function validateChain(chain) {
 
 
 // Validate the stored chain
-validateChain(storedChain);
+validateChain(chain);
