@@ -1,9 +1,9 @@
 export { createValidateButton };
-import { default as Chain } from "../src/blockchain/chain.js";
 import { validateChain } from "../src/blockchain/validateChain.js";
 
-let masterChain = new Chain();
-// VALIDATE CHAIN
+
+// Retrieve the stored chain from local storage
+let storedChain = JSON.parse(localStorage.getItem("masterChain"));
 
 function createValidateButton() {
   console.log("---- createValidateButton ----");
@@ -23,17 +23,17 @@ function createValidateButton() {
   validateButton.addEventListener("click", () => {
     console.log("validateButton");
 
-    //This doesn't check the chain in an apropriate way!!
-    //An almost working version is in the pipe. Stay tuned
+    // Retrieve the stored chain from local storage
+    let storedChain = JSON.parse(localStorage.getItem("masterChain"));
 
-    if (!localStorage.masterChain) {
+    if (!storedChain) {
       alert("No chain created yet!");
-    } else
-      if (validateChain(masterChain)) {
-        validationStatus.classList.add("green");
-        console.log("Jakob är bäst!");
-      } else {
-        validationStatus.classList.add("red");
-      }
+    } else if (validateChain(storedChain)) {
+      validationStatus.classList.add("green");
+      console.log("Jakob är bäst!");
+    } else {
+      validationStatus.classList.add("red");
+    }
   });
 }
+
