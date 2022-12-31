@@ -1,9 +1,9 @@
-export function validateChain(chain) {
+export { validateChain };
 
-  if (!localStorage.first){
-       // Show alert
+function validateChain(chain) {
+
+  if (!localStorage.masterChain){
        alert("No chain created yet!");
-      
       }
 
   for (let i = 1; i < chain.blockChain.length; i++) {
