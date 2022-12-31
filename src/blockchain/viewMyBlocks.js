@@ -1,17 +1,13 @@
 export { viewMyBlocks };
 
 function viewMyBlocks() {
-
   // DISPLAY ACTIVE USER'S OWN BLOCKS
 
   let viewMyBlocksButton = document.getElementById("viewMyBlocksButton");
 
   viewMyBlocksButton.addEventListener("click", () => {
-    console.log("viewMyBlocksButton");
-
     // GENERATE LIST FROM LS FETCHED DATA
     let loggedInUser = localStorage.getItem("userLoggedIn");
-    console.log("Loggedinuser är: " + loggedInUser);
 
     let masterChain = localStorage.getItem("masterChain");
     let chain;
@@ -26,7 +22,6 @@ function viewMyBlocks() {
 
     // Displays actual block number in the chain, not necessarily starting from 1 for the current user:
     function getMySavedBlocks(chain, loggedInUser) {
-
       return chain.blockChain.filter(function (block, index) {
         block.blockNumber = index + 1; // add blockNumber property to block
         return block.data.user === loggedInUser;
@@ -34,7 +29,7 @@ function viewMyBlocks() {
     }
 
     let mySavedBlocks = getMySavedBlocks(chain, loggedInUser);
-    
+
     // If the logged-in user has no blocks added yet, DO NOT display drop-down table, but display an alert.
     if (mySavedBlocks.length === 0) {
       alert("You have not added any blocks yet!");
@@ -52,9 +47,7 @@ function viewMyBlocks() {
     if (parentEl.getElementsByTagName("li").length > 0) {
       // List is already displayed, so remove it
       parentEl.innerHTML = "";
-
     } else {
-
       // GENERATE AND FILL THE DROP-DOWN TABLE
       for (let i = 0; i < mySavedBlocks.length; i++) {
         let item = document.createElement("li", "br");
@@ -71,7 +64,8 @@ function viewMyBlocks() {
         item.appendChild(userRow);
 
         let longitudeRow = document.createElement("p");
-        longitudeRow.innerHTML = "Longitude: " + mySavedBlocks[i].data.longitude;
+        longitudeRow.innerHTML =
+          "Longitude: " + mySavedBlocks[i].data.longitude;
         item.appendChild(longitudeRow);
 
         let latitudeRow = document.createElement("p");
@@ -87,16 +81,22 @@ function viewMyBlocks() {
         item.appendChild(countryRow);
 
         let timestampRow = document.createElement("p");
-        timestampRow.innerHTML = "Timestamp: " + mySavedBlocks[i].data.timestamp;
+        timestampRow.innerHTML =
+          "Timestamp: " + mySavedBlocks[i].data.timestamp;
         item.appendChild(timestampRow);
 
         let timeRow = document.createElement("p");
-        timeRow.innerHTML = "Local Time: " + mySavedBlocks[i].timestamp.toString().split("(")[0]; // take away (Central European Standard Time)
+        timeRow.innerHTML =
+          "Local Time: " + mySavedBlocks[i].timestamp.toString().split("(")[0]; // take away (Central European Standard Time)
         item.appendChild(timeRow);
 
         let previousHashRow = document.createElement("p");
-        previousHashRow.innerHTML = "Previous hash: " + mySavedBlocks[i].previousHash;
-        previousHashRow.setAttribute("data-hash", mySavedBlocks[i].previousHash);
+        previousHashRow.innerHTML =
+          "Previous hash: " + mySavedBlocks[i].previousHash;
+        previousHashRow.setAttribute(
+          "data-hash",
+          mySavedBlocks[i].previousHash
+        );
         previousHashRow.classList.add("hash");
         item.appendChild(previousHashRow);
 

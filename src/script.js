@@ -27,35 +27,27 @@ if (!localStorage.getItem("users")) {
 }
 
 // oldScript --------------------------------------------
-console.log("SCRIPT: rollApi");
 rollApi(searchButton, input);
-console.log("SCRIPT: createLoginField");
 createLoginField();
-console.log("SCRIPT: createValidateButton");
 createValidateButton();
 //  oldScript --------------------------------------------
 
-// logInAndOut -------------------------------------------- 
+// logInAndOut --------------------------------------------
 onload = () => {
   const loggedInUser = localStorage.getItem("userLoggedIn");
   //CHECK IF THERE IS SOMEONE LOGGED IN AND GENERATE LOGGED-IN OR PUBLIC VIEW ACCORDINGLY
   if (loggedInUser) {
-    console.log("SCRIPT - loggedIn: createLoggedInView");
     createLoggedInView();
   } else {
-    console.log("SCRIPT: createLoginField");
     createLoginField();
   }
 };
-
-console.log("SCRIPT - loggedIn: storeChainInLocalStorage");
 storeChainInLocalStorage();
-console.log("SCRIPT - loggedIn: viewMyBlocks");
 createValidateButton();
-// logInAndOut -------------------------------------------- 
+// logInAndOut --------------------------------------------
 
 // disable page resize to narrower than 480 pixels
-window.addEventListener("resize", function() {
+window.addEventListener("resize", function () {
   if (window.innerWidth < 480) {
     event.preventDefault();
     window.innerWidth = 480;
