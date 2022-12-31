@@ -28,6 +28,8 @@ function validateChain(chain) {
   for (let i = 1; i < chain.blockChain.length; i++) {
     const currentBlock = chain.blockChain[i];
     const previousBlock = chain.blockChain[i - 1];
+    //currentBlock.previousHash = 50;               //USE THESE TWO LINES TO ALTER A HASH AND TEST THE VALIDATE FUNCTION
+    //console.log( "current blocks previous hash is now ===>" +currentBlock.previousHash);
 
     if (currentBlock.previousHash !== previousBlock.newHash) {
       console.log(`Invalid previous hash for block ${i + 1}`);
