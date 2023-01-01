@@ -12,7 +12,6 @@ function createLoginField() {
 
   loginButton.addEventListener("click", () => {
     const users = JSON.parse(localStorage.getItem("users"));
-    console.log("createLoginField.users", users);
     const foundUser = users.find(
       (user) =>
         user.userName === userName.value && user.passWord === passWord.value
@@ -24,6 +23,6 @@ function createLoginField() {
       alert("Invalid!");
     }
   });
-  
+
   displayPublicChainData();
 }

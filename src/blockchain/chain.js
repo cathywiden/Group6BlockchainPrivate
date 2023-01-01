@@ -1,4 +1,4 @@
-import { default as Block } from "../blockchain/block.js"; 
+import { default as Block } from "../blockchain/block.js";
 import { calculateHash } from "../blockchain/calculateHash.js";
 
 export default class Chain {
@@ -9,7 +9,6 @@ export default class Chain {
   }
 
   createGenesisBlock() {
-
     // CREATES THE FIRST BLOCK ON THE CHAIN
     return new Block(
       { user: "Genesis", longitude: 0, latitude: 0 },
@@ -27,21 +26,28 @@ export default class Chain {
     //FETCH PREVIOUS BLOCK HASH
     return this.blockChain[this.blockChain.length - 1].newHash; //RETURNS PREVIOUS BLOCK'S HASH BUT SKIPS GENESISBLOCK
   }
-  
-  async addBlock() {
 
+  async addBlock() {
     // fetch loggedInUser + location data from LS
     const user = localStorage.getItem("userLoggedIn");
     const longitude = localStorage.getItem("longitude");
     const latitude = localStorage.getItem("latitude");
-    const city = localStorage.getItem("city"); 
-    const country = localStorage.getItem("country"); 
+    const city = localStorage.getItem("city");
+    const country = localStorage.getItem("country");
 
     const timestamp = Date.now(); // (milliseconds)
     const randomNumber = Math.random();
 
     // new block object with uuid
-    const newBlock = {user, longitude, latitude, city, country, timestamp, randomNumber};
+    const newBlock = {
+      user,
+      longitude,
+      latitude,
+      city,
+      country,
+      timestamp,
+      randomNumber,
+    };
 
     // hashing new block
     const newBlockHash = await calculateHash(newBlock);
@@ -58,4 +64,3 @@ export default class Chain {
     this.blockChain.push(new Block(newBlock, newBlockHash, previousHash));
   }
 }
-

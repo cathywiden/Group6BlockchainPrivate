@@ -1,13 +1,9 @@
 export { displayPublicChainData };
 
 function displayPublicChainData() {
-
   // DISPLAY PUBLIC CHAIN DATA
-  console.log("---- displayPublicChainData ----");
 
   frequentLocationsButton.addEventListener("click", () => {
-    console.log("frequentLocationsButton");
-
     const loggedInUser = localStorage.getItem("userLoggedIn");
     if (!loggedInUser) {
       let masterChain = localStorage.getItem("masterChain");
@@ -22,12 +18,13 @@ function displayPublicChainData() {
       }
 
       // Get all the cities from the blocks in the chain
-      let cities = chain.blockChain.map(block => block.data.city);
+      let cities = chain.blockChain.map((block) => block.data.city);
 
       // Count the frequency of each city
       let cityCounts = {};
       for (let city of cities) {
-        if ((city !== "undefined") && city in cityCounts) { // exclude undefined cities: sometimes the API returns undefined
+        if (city !== "undefined" && city in cityCounts) {
+          // exclude undefined cities: sometimes the API returns undefined
           cityCounts[city]++;
         } else if (city) {
           cityCounts[city] = 1;
@@ -36,14 +33,16 @@ function displayPublicChainData() {
 
       // Find country corresponding to cities with highest count
       let cityToCountry = {};
-      chain.blockChain.forEach(block => {
+      chain.blockChain.forEach((block) => {
         let city = block.data.city;
         let country = block.data.country;
         cityToCountry[city] = country;
       });
 
       // Sort according to city frequency
-      let sortedCities = Object.keys(cityCounts).sort((a, b) => cityCounts[b] - cityCounts[a]);
+      let sortedCities = Object.keys(cityCounts).sort(
+        (a, b) => cityCounts[b] - cityCounts[a]
+      );
 
       // Get the data for the newest block
       let newestBlock = chain.blockChain[chain.blockChain.length - 1];
@@ -66,15 +65,12 @@ function displayPublicChainData() {
       let topThreeCities = sortedCities.slice(0, 3);
       let parentEl = document.getElementById("newH3");
 
-
       // TOGGLE: display list on first click, remove list on clicking again
       // Check if the list is already displayed
       if (parentEl.getElementsByTagName("ul").length > 0) {
         // List is already displayed, so remove it
         parentEl.innerHTML = ""; // ahh, finally!! Toggle the entire newH3
-
       } else {
-
         // List is not displayed, so add it
 
         // Add an empty line before the header
@@ -98,7 +94,6 @@ function displayPublicChainData() {
           let item = document.createElement("li");
           item.innerHTML = `${city}, ${cityToCountry[city]} [logged ${cityCounts[city]} times]`;
           list.appendChild(item);
-
         });
 
         // Add an empty line before "Last block added from"
@@ -123,9 +118,7 @@ function displayPublicChainData() {
 
         // Add an empty line after the list item
         list.appendChild(document.createElement("br"));
-
       }
-
     }
   });
 }

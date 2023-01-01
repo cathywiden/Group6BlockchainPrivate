@@ -1,7 +1,7 @@
 export async function calculateHash(data) {
   //Basically Janne's kod except that I converted all data to JSON.
 
-  const dataString = JSON.stringify(data + Math.random()); // to me (Cathy), the concatenated hash function always resulted in the exact same hash from block 2 onwards, that's why I stringified it instead. Math.random() adds salt.
+  const dataString = JSON.stringify(data + Math.random());
 
   // Encode string as an array of 8-bit integers
   const messageInt8 = new TextEncoder().encode(dataString);
@@ -20,4 +20,3 @@ export async function calculateHash(data) {
   // Return the hash as a hex string
   return hashHex;
 }
-
