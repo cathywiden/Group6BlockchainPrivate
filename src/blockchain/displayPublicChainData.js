@@ -69,7 +69,7 @@ function displayPublicChainData() {
       // Check if the list is already displayed
       if (parentEl.getElementsByTagName("ul").length > 0) {
         // List is already displayed, so remove it
-        parentEl.innerHTML = ""; // ahh, finally!! Toggle the entire newH3
+        parentEl.innerHTML = ""; 
       } else {
         // List is not displayed, so add it
 
