@@ -118,19 +118,18 @@ span {
 
 /* GPS icon in input field */
 .gpsWrapper {
-  position: relative; /* required for the pseudo-element to work */
+  position: relative; 
   pointer-events: mouse;
 }
 
 .gpsIcon {
-  /* adjust the size and position of the icon as needed */
   width: 30px;
   height: 30px;
   position: absolute;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  cursor: pointer; /* change the cursor to a hand when hovering over the icon */
+  cursor: pointer; 
 }
 
 /* GPS icon in input field (active --> event listener) */
@@ -144,7 +143,7 @@ span {
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  cursor: pointer; /* change the cursor to a hand when hovering over the icon */
+  cursor: pointer; 
 }
 
 .infoBox {
@@ -239,7 +238,7 @@ h5 {
   padding-left: 20px;
   padding-right: 20px;
   text-align: left;
-  margin: 0 auto; /* horizontally center the element */
+  margin: 0 auto; 
 } 
 
 .displayBoxes {
@@ -271,7 +270,7 @@ li.displayBoxes {
   height: 1000vh;
   width: 100vw;
   background-color: black;
-  background-attachment: scroll; /* doesn*t work here */
+  background-attachment: scroll; /* doesn*t work here -- bug! */
 }
 
 .styled-button {
