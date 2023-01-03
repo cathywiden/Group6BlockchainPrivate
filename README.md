@@ -1,4 +1,15 @@
-# Group6Blockchain
+Updates
+
+User "cathy" has extra features available to her -- she can hack blocks to test if validateChain() works. She can also see all users' all blocks.
+
+Other users can only see their own blocks and can't hack blocks.
+
+
+
+
+
+
+_______________________
 
 Group 6 assignment
 
