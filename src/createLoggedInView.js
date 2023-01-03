@@ -4,6 +4,7 @@ import { viewMyBlocks } from "../src/blockchain/viewMyBlocks.js";
 import { viewAllBlocks } from "../src/blockchain/adminViewAllBlocks.js";
 import { createHackButton } from "../src/createHackButton.js";
 import { viewBlocks } from "../src/blockchain/viewBlocks.js";
+import { viewBlocks } from "../src/blockchain/viewBlocks.js";
 
 function createLoggedInView() {
   let currentUser = localStorage.getItem("userLoggedIn");
