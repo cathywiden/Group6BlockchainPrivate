@@ -1,10 +1,4 @@
-
-  { userName: "Janne", passWord: "Kemi" },
-  { userName: "Jakob", passWord: "Dahlberg" },
-  { userName: "Edvin", passWord: "Ekström" },
-  { userName: "Fredrik", passWord: "Carlsson" },
-  { userName: "Hossein", passWord: "Feili" },
-  { userName: "Carolin", passWord: "Nielsen" },
-  { userName: "Katalin", passWord: "Widén" },
-  { userName: "test", passWord: "test" },
-];
+cathy/widén
+katalin/widén
+johnny/widen
+test/test

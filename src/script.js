@@ -4,6 +4,7 @@ import { createLoginField } from "../src/createLoginField.js";
 import { createValidateButton } from "../src/createValidateButton.js";
 import { createLoggedInView } from "../src/createLoggedInView.js";
 import { storeChainInLocalStorage } from "../src/blockchain/storeChainInLocalStorage.js";
+import { viewBlocks } from "../src/blockchain/viewBlocks.js";
 
 let searchButton = document.getElementsByClassName("searchButton")[0];
 let input = document.getElementsByClassName("searchInput")[0];
@@ -11,13 +12,9 @@ let input = document.getElementsByClassName("searchInput")[0];
 let masterChain = new Chain();
 
 let users = [
-  { userName: "Janne", passWord: "Kemi" },
-  { userName: "Jakob", passWord: "Dahlberg" },
-  { userName: "Edvin", passWord: "Ekström" },
-  { userName: "Fredrik", passWord: "Carlsson" },
-  { userName: "Hossein", passWord: "Feili" },
-  { userName: "Carolin", passWord: "Nielsen" },
-  { userName: "Katalin", passWord: "Widén" },
+  { userName: "cathy", passWord: "widén" },
+  { userName: "johnny", passWord: "widen" },
+  { userName: "katalin", passWord: "widén" },
   { userName: "test", passWord: "test" },
 ];
 
@@ -27,27 +24,35 @@ if (!localStorage.getItem("users")) {
 }
 
 // oldScript --------------------------------------------
+console.log("SCRIPT: rollApi");
 rollApi(searchButton, input);
+console.log("SCRIPT: createLoginField");
 createLoginField();
+console.log("SCRIPT: createValidateButton");
 createValidateButton();
 //  oldScript --------------------------------------------
 
-// logInAndOut --------------------------------------------
+// logInAndOut -------------------------------------------- 
 onload = () => {
   const loggedInUser = localStorage.getItem("userLoggedIn");
   //CHECK IF THERE IS SOMEONE LOGGED IN AND GENERATE LOGGED-IN OR PUBLIC VIEW ACCORDINGLY
   if (loggedInUser) {
+    console.log("SCRIPT - loggedIn: createLoggedInView");
     createLoggedInView();
   } else {
+    console.log("SCRIPT: createLoginField");
     createLoginField();
   }
 };
+
+console.log("SCRIPT - loggedIn: storeChainInLocalStorage");
 storeChainInLocalStorage();
+console.log("SCRIPT - loggedIn: viewMyBlocks");
 createValidateButton();
-// logInAndOut --------------------------------------------
+// logInAndOut -------------------------------------------- 
 
 // disable page resize to narrower than 480 pixels
-window.addEventListener("resize", function () {
+window.addEventListener("resize", function() {
   if (window.innerWidth < 480) {
     event.preventDefault();
     window.innerWidth = 480;

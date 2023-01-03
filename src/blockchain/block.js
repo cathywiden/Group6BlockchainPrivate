@@ -1,4 +1,6 @@
+
 export default class Block {
+
   constructor(data, newHash, previousHash) {
     this.data = data;
     this.previousHash = previousHash;

@@ -1,10 +1,7 @@
-export { createValidateButton };
-import { validateChain } from "../src/blockchain/validateChain.js";
+import { default as Chain } from "../src/blockchain/chain.js";
+import { validateChain } from "../src/blockchain/validateChain.js"
 
-// Retrieve the stored chain from local storage
-let storedChain = JSON.parse(localStorage.getItem("masterChain"));
-
-function createValidateButton() {
+export async function createValidateButton(){
   let validateContainer = document.getElementById("validateContainer");
   validateContainer.innerHTML = "";
 
@@ -15,18 +12,32 @@ function createValidateButton() {
   validateContainer.appendChild(validateButton);
 
   // add some visual cue to that the validation has been successful, other than just a console log --> green indicator
-  const validationStatus = document.getElementById("validationStatus");
 
   validateButton.addEventListener("click", () => {
-    // Retrieve the stored chain from local storage
-    let storedChain = JSON.parse(localStorage.getItem("masterChain"));
-
-    if (!storedChain) {
+    if (!localStorage.masterChain){
       alert("No chain created yet!");
-    } else if (validateChain(storedChain)) {
-      validationStatus.classList.add("green");
     } else {
-      validationStatus.classList.add("red");
-    }
-  });
+      let chain = JSON.parse(localStorage.getItem("masterChain"));
+      Object.setPrototypeOf(chain, Chain.prototype);
+      //let hackedBlocks = validateChain(chain);
+      //console.log("yyyyyy hackedBlocks", hackedBlocks);
+      //console.log(" hackedBlocks.length", hackedBlocks.length);
+      //let hacked = hackedBlocks.length > 0;
+      //let isValid = hackedBlocks.length === 0 || hackedBlocks.length === undefined;
+      if (validateChain(chain)){
+        console.log("TRUE");
+        validationStatus.classList.add("green");
+      } else {
+        console.log("FALSE");
+        validationStatus.classList.add("red");
+      }
+
+      // if (localStorage.hackedBlocks === 0 || localStorage.hackedBlocks === undefined){
+      //   console.log("TRUE");
+      //   validationStatus.classList.add("green");
+      // } else {
+      //   console.log("FALSE");
+      //   validationStatus.classList.add("red");
+      // }
+  }});
 }

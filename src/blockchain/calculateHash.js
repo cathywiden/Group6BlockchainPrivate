@@ -1,7 +1,7 @@
 export async function calculateHash(data) {
   //Basically Janne's kod except that I converted all data to JSON.
 
-  const dataString = JSON.stringify(data + Math.random());
+  const dataString = JSON.stringify(data + Math.random()); // Math.random() adds salt.
 
   // Encode string as an array of 8-bit integers
   const messageInt8 = new TextEncoder().encode(dataString);
@@ -20,3 +20,4 @@ export async function calculateHash(data) {
   // Return the hash as a hex string
   return hashHex;
 }
+

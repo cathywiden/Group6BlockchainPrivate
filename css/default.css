@@ -9,6 +9,10 @@
   font-weight: bold;
 }
 
+.italic-text {
+  font-style: italic;
+}
+
 .firstBackground {
   position: relative;
   height: 100vh;
@@ -79,7 +83,6 @@ span {
 .searchInput {
   resize: none;
   height: 90%;
-  width: 90%;
   margin: 0 1vw;
   border: none;
   line-height: 7vh;
@@ -118,18 +121,19 @@ span {
 
 /* GPS icon in input field */
 .gpsWrapper {
-  position: relative; 
+  position: relative; /* required for the pseudo-element to work */
   pointer-events: mouse;
 }
 
 .gpsIcon {
+  /* adjust the size and position of the icon as needed */
   width: 30px;
   height: 30px;
   position: absolute;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  cursor: pointer; 
+  cursor: pointer; /* change the cursor to a hand when hovering over the icon */
 }
 
 /* GPS icon in input field (active --> event listener) */
@@ -143,7 +147,7 @@ span {
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  cursor: pointer; 
+  cursor: pointer; /* change the cursor to a hand when hovering over the icon */
 }
 
 .infoBox {
@@ -159,8 +163,8 @@ span {
 }
 
 .ip,
-.longitude,
-.latitude,
+.timezone,
+.isp,
 .location {
   display: grid;
   grid-template-rows: 0.4fr 1fr;
@@ -219,12 +223,12 @@ h5 {
 
 #newH2 {
   width: 700px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 20px;
+  padding-right: 40px;
   margin-bottom: 10px; 
   font-size: 1.8ch;
   background-color: white;
-  border: 3px solid rgb(171, 49, 171);
+  border: 3px solid rgb(9, 113, 49);
   color: black;
   inline-size: min-content;
   border-radius: 15px;
@@ -235,19 +239,32 @@ h5 {
   background-color: white;
   border-radius: 15px;
   width: 350px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 0px;
+  padding-right: 0px;
   text-align: left;
-  margin: 0 auto; 
+  margin: 0 auto; /* horizontally center the element */
 } 
 
 .displayBoxes {
   font-size: 1.2ch;
-  border: 1px solid rgb(171, 49, 171);
+  border: 2px solid green;
   padding: 10px;
   border-radius: 5px;
   margin: 10px;
   width: 100%;
+  background: rgba(25, 221, 25, 0.19);
+}
+
+.displayBoxesHacked {
+  font-size: 1.2ch;
+  border: 3px solid red;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+  width: 100%;
+  color: red;
+  border-style: dashed;
+  background: rgba(249, 12, 123, 0.115);
 }
 
 li.displayBoxes {
@@ -255,6 +272,10 @@ li.displayBoxes {
   font-weight: 100;
 }
 
+li.displayBoxesHacked {
+  list-style: none;
+  font-weight: 100;
+}
 
 .hash:hover {
   background-color: rgb(209, 204, 204);
@@ -270,7 +291,7 @@ li.displayBoxes {
   height: 1000vh;
   width: 100vw;
   background-color: black;
-  background-attachment: scroll; /* doesn*t work here -- bug! */
+  background-attachment: scroll; /* doesn*t work here */
 }
 
 .styled-button {
@@ -318,6 +339,16 @@ li.displayBoxes {
   padding-left: 5px;
 }
 
+.styled-input-hack {
+  border-radius: 5px;
+  border: 2px solid black;
+  padding-top: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  width: 9%;
+}
+
 #validateButton {
   position: fixed;
   display: flex;
@@ -345,6 +376,16 @@ li.displayBoxes {
   background-color: green;
 }
 
+.redAlert {
+  font-weight: bold;
+  color: red;
+}
+
+.greenOK {
+  font-weight: bold;
+  color: rgb(9, 122, 10);
+}
+
 .greenPipe {
   background-image: url("../img/greenpipe.png");
   background-size: 45px 45px; 
@@ -355,4 +396,8 @@ li.displayBoxes {
   right: 45px;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.inline-button {
+  display: inline-block;
 }
