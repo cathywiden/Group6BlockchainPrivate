@@ -67,7 +67,7 @@ function viewMyBlocks() {
         console.log("i", i, "displayBoxes");
         item.setAttribute("class", "displayBoxes");
         console.log("i", i);
-        //let j = i + 2;
+        
         console.log("typeof blocksHacked =", typeof blocksHacked);
 
         if (blocksHacked != null) {
