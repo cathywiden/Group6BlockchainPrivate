@@ -277,6 +277,10 @@ li.displayBoxesHacked {
   font-weight: 100;
 }
 
+.list-item-public {
+  padding: 0 10px;
+}
+
 .hash:hover {
   background-color: rgb(209, 204, 204);
 }

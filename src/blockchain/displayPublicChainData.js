@@ -82,6 +82,7 @@ function displayPublicChainData() {
 
         // Add a header to the list
         let header = document.createElement("h3");
+        header.setAttribute("class", "list-item-public");
         header.innerHTML = "Top locations logged by our system";
         parentEl.appendChild(header);
 
@@ -95,6 +96,7 @@ function displayPublicChainData() {
         // Loop through the top three cities and add them to the list along with the corresponding country and number of blocks logged from that city
         topThreeCities.forEach((city, index) => {
           let item = document.createElement("li");
+          item.setAttribute("class", "list-item-public");
           item.innerHTML = `${city}, ${cityToCountry[city]} [logged ${cityCounts[city]} times]`;
           list.appendChild(item);
 
@@ -105,10 +107,12 @@ function displayPublicChainData() {
 
         // Create a header element for the latest block information
         let latestBlockHeader = document.createElement("h5");
+        latestBlockHeader.setAttribute("class", "list-item-public");
         latestBlockHeader.innerHTML = "Last block added from";
 
         // Create a paragraph element for last block information
         let latestBlockParagraph = document.createElement("p");
+        latestBlockParagraph.setAttribute("class", "list-item-public");
         latestBlockParagraph.innerHTML = `${newestBlockCity}, ${newestBlockCountry}, ${day}/${month}/${year} ${localTime}`;
 
         let latestBlock = document.createElement("li");
