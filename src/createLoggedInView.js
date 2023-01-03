@@ -12,6 +12,7 @@ function createLoggedInView() {
   loginContainer.appendChild(loggedinView);
 
   if (currentUser === 'cathy') {
+
     loggedinView.innerHTML =
       '<br><strong>Welcome, ' +
       currentUser +
@@ -24,13 +25,11 @@ function createLoggedInView() {
       '<input id="hackBlockNumber" type="number" placeholder="Block#" class="styled-input-hack">' +
       '  <button id="hackButton" class="styled-button">Hack</button><br></br><h3 id="newH3"></h3>';
 
-    const masterChain = localStorage.getItem("masterChain");
-
-    let hackBlockNumber = document.getElementById("hackBlockNumber");
-    hackBlockNumber.setAttribute("min", 1);
-    hackBlockNumber.setAttribute("max", masterChain.length);
-
-    let hackButton = document.getElementById("hackButton");
+    /* const masterChain = localStorage.getItem("masterChain");
+    if (masterChain !== null) {
+      hackBlockNumber.setAttribute("min", 1);
+      hackBlockNumber.setAttribute("max", masterChain.length);
+    } */
 
     createHackButton();
 
@@ -54,13 +53,8 @@ function createLoggedInView() {
     localStorage.removeItem("userLoggedIn");
   });
 
-
   let viewMyBlocksButton = document.getElementById("viewMyBlocksButton");
   viewMyBlocksButton.className = "styled-button";
 
   viewMyBlocks();
-
-
-
-
 }
